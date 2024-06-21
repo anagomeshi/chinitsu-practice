@@ -36,6 +36,90 @@ html,body {
   max-width: 4rem;
 }
 
+.comment-area{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  box-sizing: border-box;
+}
+
+.correct-comment{
+  display: none;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.correct-comment.visible{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.correct-comment img{
+  width: 40px;
+  height: 40px;
+  margin-right: 1rem;
+  box-sizing: border-box;
+}
+
+.correct-comment span{
+  color: #ffffff;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+.uncorrect-comment{
+  display: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.uncorrect-comment.visible{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.uncorrect-comment-header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 28px;
+  box-sizing: border-box;
+}
+
+.uncorrect-comment-header span{
+  color: #ffffff;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.uncorrect-comment-footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.uncorrect-comment-footer img{
+  width: 2rem;
+  margin: 0.125rem;
+}
+
+.uncorrect-comment-footer span{
+  color: #ffffff;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
 .select-area{
   display: flex;
   flex-direction: row;
@@ -63,10 +147,17 @@ html,body {
   width: 2.75rem;
 }
 
-.answer-button{
+.button-area{
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 50px;
+  box-sizing: border-box;
+}
+
+.button-area button{
+  display: none;
   width: 100%;
   height: 50px;
   margin: 0;
@@ -80,4 +171,10 @@ html,body {
   background-color: #698c78;
   cursor: pointer;
   box-sizing: border-box;
+}
+
+.button-area button.showed{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
