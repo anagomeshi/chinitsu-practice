@@ -1,5 +1,6 @@
-var CACHE_NAME = 'chinitsu-practice';
+var CACHE_NAME = 'chinitsu-practice-v1';
 var urlsToCache = [
+    '/',
     'script.js',
     'style.css'
 ];
