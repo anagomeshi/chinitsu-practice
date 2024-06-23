@@ -1,8 +1,8 @@
 var CACHE_NAME = 'chinitsu-practice';
 var urlsToCache = [
     '/',
-    'https://osechi-1111.github.io/chintsu-practice/script.js',
-    'https://osechi-1111.github.io/chintsu-practice/style.css'
+    '/script.js',
+    '/style.css'
 ];
 
 // インストール処理
