@@ -11,24 +11,56 @@ html,body {
   box-sizing: border-box;
 }
 
-.app-chrome{
+.flex{
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
-  padding: 16px;
-  background-color: #15532e;
   box-sizing: border-box;
 }
 
-.question-area{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
+.flex-column{
+  flex-direction: column;
+}
+
+.flex-wrap{
+  flex-wrap: wrap;
+}
+
+.space-between{
+  justify-content: space-between;
+}
+
+.app-chrome{
+  height: 100%;
+  padding: 16px;
+  background-color: #15532e;
+}
+
+.app-header{
+  height: 32px;
+}
+
+.app-header button{
+  width: auto;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
   box-sizing: border-box;
+}
+
+.app-header img{
+  width: 1.75rem;
+}
+
+.app-header span{
+  color: #ffffff;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  margin-left: 0.5rem;
 }
 
 .question-area img{
@@ -37,12 +69,7 @@ html,body {
 }
 
 .comment-area{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
   height: 40px;
-  box-sizing: border-box;
 }
 
 .correct-comment{
@@ -86,27 +113,13 @@ html,body {
 }
 
 .uncorrect-comment-header{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
   height: 28px;
-  box-sizing: border-box;
 }
 
 .uncorrect-comment-header span{
   color: #ffffff;
   font-size: 1.25rem;
   line-height: 1.75rem;
-}
-
-.uncorrect-comment-footer{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  box-sizing: border-box;
 }
 
 .uncorrect-comment-footer img{
@@ -121,12 +134,7 @@ html,body {
 }
 
 .select-area{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
   width: 65%;
-  box-sizing: border-box;
 }
 
 .select-button{
@@ -147,13 +155,12 @@ html,body {
   width: 2.75rem;
 }
 
+:disabled{
+  cursor: default;
+}
+
 .button-area{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
   height: 50px;
-  box-sizing: border-box;
 }
 
 .button-area button{
