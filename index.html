@@ -10,59 +10,68 @@
 </head>
 
 <body>
-  <div class="app-chrome">
-    <div class="question-area"></div>
-    <div class="comment-area">
+  <div class="flex flex-column space-between app-chrome">
+    <div class="flex space-between app-header">
+      <button class="flex">
+        <img src="img/time-attack.svg" alt="" draggable="false">
+        <span>タイムアタック</span>
+      </button>
+      <button class="flex">
+        <img src="img/setting.svg" alt="" draggable="false">
+      </button>
+    </div>
+    <div class="flex question-area"></div>
+    <div class="flex comment-area">
       <div class="correct-comment">
         <img src="img/check.svg" alt="" draggable="false">
         <span>正解！</span>
       </div>
       <div class="uncorrect-comment">
-        <div class="uncorrect-comment-header">
+        <div class="flex uncorrect-comment-header">
           <span>不正解</span>
         </div>
-        <div class="uncorrect-comment-footer"></div>
+        <div class="flex uncorrect-comment-footer"></div>
       </div>
     </div>
-    <div class="select-area">
+    <div class="flex flex-wrap space-between select-area">
       <button class="select-button" onclick="select(1)">
-        <img src="img/s1.png" alt="">
+        <img src="img/s1.png" alt="" draggable="false">
       </button>
       <button class="select-button" onclick="select(2)">
-        <img src="img/s2.png" alt="">
+        <img src="img/s2.png" alt="" draggable="false">
       </button>
       <button class="select-button" onclick="select(3)">
-        <img src="img/s3.png" alt="">
+        <img src="img/s3.png" alt="" draggable="false">
       </button>
       <button class="select-button" onclick="select(4)">
-        <img src="img/s4.png" alt="">
+        <img src="img/s4.png" alt="" draggable="false">
       </button>
       <button class="select-button" onclick="select(5)">
-        <img src="img/s5.png" alt="">
+        <img src="img/s5.png" alt="" draggable="false">
       </button>
       <button class="select-button" onclick="select(6)">
-        <img src="img/s6.png" alt="">
+        <img src="img/s6.png" alt="" draggable="false">
       </button>
       <button class="select-button" onclick="select(7)">
-        <img src="img/s7.png" alt="">
+        <img src="img/s7.png" alt="" draggable="false">
       </button>
       <button class="select-button" onclick="select(8)">
-        <img src="img/s8.png" alt="">
+        <img src="img/s8.png" alt="" draggable="false">
       </button>
       <button class="select-button" onclick="select(9)">
-        <img src="img/s9.png" alt="">
+        <img src="img/s9.png" alt="" draggable="false">
       </button>
     </div>
-    <div class="button-area">
+    <div class="flex button-area">
       <button class="answer-button showed" onclick="answer()">回答</button>
       <button class="next-button" onclick="next()">次の問題</button>
     </div>
   </div>
-  <script type="text/javascript" src="./script.js"></script>
+  <script type="text/javascript" src="script.js"></script>
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('./sw.js').then(function(registration) {
+        navigator.serviceWorker.register('sw.js').then(function(registration) {
           console.log('ServiceWorker registration successful with scope: ', registration.scope);
         }, function(err) {
           console.log('ServiceWorker registration failed: ', err);
