@@ -1,20 +1,19 @@
 var CACHE_NAME = 'chinitsu-practice-v2';
 var urlsToCache = [
-    '/',
-    '/img/check.svg',
-    '/img/s1.png',
-    '/img/s2.png',
-    '/img/s3.png',
-    '/img/s4.png',
-    '/img/s5.png',
-    '/img/s6.png',
-    '/img/s7.png',
-    '/img/s8.png',
-    '/img/s9.png',
-    '/img/setting.svg',
-    '/img/time-attack.svg',
-    '/script.js',
-    '/style.css'
+    'img/check.svg',
+    'img/s1.png',
+    'img/s2.png',
+    'img/s3.png',
+    'img/s4.png',
+    'img/s5.png',
+    'img/s6.png',
+    'img/s7.png',
+    'img/s8.png',
+    'img/s9.png',
+    'img/setting.svg',
+    'img/time-attack.svg',
+    'script.js',
+    'style.css'
 ];
 
 // インストール処理
