@@ -1,4 +1,4 @@
-var CACHE_NAME = 'chinitsu-practice-v1';
+var CACHE_NAME = 'chinitsu-practice-v2';
 var urlsToCache = [
     '/',
     '/img/check.svg',
