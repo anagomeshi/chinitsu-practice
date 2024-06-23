@@ -2,8 +2,10 @@ const questionArea = document.querySelector('.question-area');
 const correctComment = document.querySelector('.correct-comment');
 const uncorrectComment = document.querySelector('.uncorrect-comment');
 const uncorrectCommentFooter = document.querySelector('.uncorrect-comment-footer');
+const selectButtons = document.querySelectorAll('.select-button');
 let selectedTile = [];
 let correctAnswer = [];
+let fourTimesTile = [];
 
 function select(number){
     const targetButton = event.target.closest('.select-button');
@@ -42,9 +44,12 @@ function generateRandomArray() {
         if (countMap[num] < maxCount) {
             result.push(num);
             countMap[num]++;
+            if(countMap[num] === maxCount){
+                fourTimesTile.push(num);
+                fourTimesTile.sort((a, b) => a - b);
+            }
         }
     }
-
     return result.sort((a, b) => a - b);
 }
 
@@ -52,6 +57,7 @@ function generateRandomArray() {
 // 問題を生成
 function generateQuestion(){
     let correctTile = 1;
+    fourTimesTile = [];
     questionArea.innerHTML = '';
     const createQuestion = generateRandomArray();
     let cloneQuestion = [...createQuestion];
@@ -63,74 +69,78 @@ function generateQuestion(){
     }
 
     for(let i = 1; i < 10; i++){
-        cloneQuestion.push(i);
-        cloneQuestion.sort((a, b) => a - b);
-        // 出現回数をカウントするオブジェクト
-        const countMap = {};
+        if(!fourTimesTile.includes(i)){
+            cloneQuestion.push(i);
+            cloneQuestion.sort((a, b) => a - b);
+            // 出現回数をカウントするオブジェクト
+            const countMap = {};
 
-        // 元の配列をループして出現回数をカウント
-        for (let num of cloneQuestion) {
-            if (countMap[num]) {
-                countMap[num]++;
-            } else {
-                countMap[num] = 1;
-            }
-        }
-
-        // カウントされた出現回数を新たな配列に格納
-        const hand = [];
-        for (let i = 1; i <= 9; i++) {
-            hand.push(countMap[i] || 0);
-        }
-        function checkMentsu(hand){
-          let r, a = hand[0], b = hand[1];
-
-          for(let i=0; i<7; i++){
-            if(r=a%3, b>=r && hand[i+2]>=r){
-              a=b-r; b=hand[i+2]-r;
-            }
-            else return false;
-          }
-
-          if(a%3==0 && b%3==0) return true;
-          else return false;
-        }
-
-        function checkHola(hand) {
-            let p = 0;
-
-            // 最初のループ: pの計算
-            for (let i = 0; i < 9; i++) {
-                p += i * hand[i];
+            // 元の配列をループして出現回数をカウント
+            for (let num of cloneQuestion) {
+                if (countMap[num]) {
+                    countMap[num]++;
+                } else {
+                    countMap[num] = 1;
+                }
             }
 
-            // 2番目のループ: handの操作と条件判定
-            for (let i = p * 2 % 3; i < 9; i += 3) {
-                // hand[i]を2減算する
-                hand[i] -= 2;
+            // カウントされた出現回数を新たな配列に格納
+            const hand = [];
+            for (let i = 1; i < 10; i++) {
+                hand.push(countMap[i] || 0);
+            }
+            function checkMentsu(hand){
+              let r, a = hand[0], b = hand[1];
 
-                // hand[i]が0以上の場合に処理を続行
-                if (hand[i] >= 0) {
-                    // checkMentsu(hand)が真の場合
-                    if (checkMentsu(hand)) {
-                        // hand[i]を元に戻し、trueを返す
-                        hand[i] += 2;
-                        return true;
-                    }
+              for(let i=0; i<7; i++){
+                if(r=a%3, b>=r && hand[i+2]>=r){
+                  a=b-r; b=hand[i+2]-r;
+                }
+                else return false;
+              }
+
+              if(a%3==0 && b%3==0) return true;
+              else return false;
+            }
+
+            function checkHola(hand) {
+                let p = 0;
+
+                // 最初のループ: pの計算
+                for (let i = 0; i < 9; i++) {
+                    p += i * hand[i];
                 }
 
-                // hand[i]を元に戻す
-                hand[i] += 2;
-            }
+                // 2番目のループ: handの操作と条件判定
+                for (let i = p * 2 % 3; i < 9; i += 3) {
+                    // hand[i]を2減算する
+                    hand[i] -= 2;
 
-            // どの条件も満たさなかった場合、falseを返す
-            return false;
+                    // hand[i]が0以上の場合に処理を続行
+                    if (hand[i] >= 0) {
+                        // checkMentsu(hand)が真の場合
+                        if (checkMentsu(hand)) {
+                            // hand[i]を元に戻し、trueを返す
+                            hand[i] += 2;
+                            return true;
+                        }
+                    }
+
+                    // hand[i]を元に戻す
+                    hand[i] += 2;
+                }
+
+                // どの条件も満たさなかった場合、falseを返す
+                return false;
+            }
+            if(checkHola(hand) === true){
+                correctAnswer.push(correctTile);
+            }
+            correctTile++;
+            cloneQuestion = [...createQuestion];
+        }else{
+            correctTile++;
         }
-        if(checkHola(hand) === true){
-            correctAnswer.push(correctTile);
-        }
-        correctTile++;
-        cloneQuestion = [...createQuestion];
     }
     correctTile = 1;
 }
@@ -148,6 +158,9 @@ function compareAnswer(selectedTile, correctAnswer){
 }
 
 function answer(){
+    selectButtons.forEach(function(button){
+        button.disabled = true;
+    });
     if(compareAnswer(selectedTile, correctAnswer)){
         correctComment.classList.add('visible');
     }else{
@@ -172,6 +185,9 @@ function answer(){
 
 function next(){
     document.querySelector('.visible').classList.remove('visible');
+    selectButtons.forEach(function(button){
+        button.disabled = false;
+    });
     let selected = document.querySelectorAll('.selected');
     for(let i = 0; i < selected.length; i++){
         selected[i].classList.remove('selected');
