@@ -17,7 +17,7 @@ html,body {
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
   padding-top: 16px;
   padding-left: 16px;
   padding-right: 16px;
