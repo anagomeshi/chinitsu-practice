@@ -10,30 +10,30 @@
 </head>
 
 <body>
-  <div class="flex flex-column space-between app-chrome">
-    <div class="flex space-between app-header">
-      <button class="flex">
+  <div class="app-chrome">
+    <div class="app-header">
+      <button>
         <img src="img/time-attack.svg" alt="" draggable="false">
         <span>タイムアタック</span>
       </button>
-      <button class="flex">
+      <button>
         <img src="img/setting.svg" alt="" draggable="false">
       </button>
     </div>
-    <div class="flex question-area"></div>
-    <div class="flex comment-area">
+    <div class="question-area"></div>
+    <div class="comment-area">
       <div class="correct-comment">
         <img src="img/check.svg" alt="" draggable="false">
         <span>正解！</span>
       </div>
       <div class="uncorrect-comment">
-        <div class="flex uncorrect-comment-header">
+        <div class="uncorrect-comment-header">
           <span>不正解</span>
         </div>
-        <div class="flex uncorrect-comment-footer"></div>
+        <div class="uncorrect-comment-footer"></div>
       </div>
     </div>
-    <div class="flex flex-wrap space-between select-area">
+    <div class="select-area">
       <button class="select-button" onclick="select(1)">
         <img src="img/s1.png" alt="" draggable="false">
       </button>
@@ -62,7 +62,7 @@
         <img src="img/s9.png" alt="" draggable="false">
       </button>
     </div>
-    <div class="flex button-area">
+    <div class="button-area">
       <button class="answer-button showed" onclick="answer()">回答</button>
       <button class="next-button" onclick="next()">次の問題</button>
     </div>
