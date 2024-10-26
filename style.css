@@ -11,6 +11,10 @@ html,body {
   box-sizing: border-box;
 }
 
+body{
+  padding-bottom: env(safe-area-inset-bottom);;
+}
+
 /* クロム */
 .app-chrome{
   display: flex;
@@ -18,10 +22,7 @@ html,body {
   align-items: center;
   flex-direction: column;
   height: 100%;
-  padding-top: 16px;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-bottom: calc(60px + env(safe-area-inset-bottom));
+  padding: 16px;
   background-color: #15532e;
   box-sizing: border-box;
 }
