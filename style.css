@@ -11,37 +11,32 @@ html,body {
   box-sizing: border-box;
 }
 
-.flex{
+/* クロム */
+.app-chrome{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  width: 100%;
+  flex-direction: column;
+  height: 100vh;
+  padding: 16px;
+  background-color: #15532e;
   box-sizing: border-box;
 }
 
-.flex-column{
-  flex-direction: column;
-}
-
-.flex-wrap{
-  flex-wrap: wrap;
-}
-
-.space-between{
-  justify-content: space-between;
-}
-
-.app-chrome{
-  height: 100%;
-  padding: 16px;
-  background-color: #15532e;
-}
-
+/* ヘッダー */
 .app-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
   height: 32px;
+  box-sizing: border-box;
 }
 
 .app-header button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: auto;
   height: 100%;
   margin: 0;
@@ -63,13 +58,28 @@ html,body {
   margin-left: 0.5rem;
 }
 
+/* クエスチョンエリア */
+.question-area{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .question-area img{
-  width: 7.5%;
+  width: 7.6%;
   max-width: 4rem;
 }
 
+/* コメントエリア */
 .comment-area{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   height: 40px;
+  box-sizing: border-box;
 }
 
 .correct-comment{
@@ -113,13 +123,26 @@ html,body {
 }
 
 .uncorrect-comment-header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   height: 28px;
+  box-sizing: border-box;
 }
 
 .uncorrect-comment-header span{
   color: #ffffff;
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+
+.uncorrect-comment-footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .uncorrect-comment-footer img{
@@ -133,8 +156,15 @@ html,body {
   line-height: 2rem;
 }
 
+/* セレクトエリア */
 .select-area{
-  width: 65%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .select-button{
@@ -152,15 +182,24 @@ html,body {
 }
 
 .select-button img{
-  width: 2.75rem;
+  display: block;
+  width: 2.25rem;
+  max-width: 100%;
+  height: auto;
 }
 
 :disabled{
   cursor: default;
 }
 
+/* ボタンエリア */
 .button-area{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   height: 50px;
+  box-sizing: border-box;
 }
 
 .button-area button{
