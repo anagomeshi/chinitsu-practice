@@ -53,96 +53,100 @@ function generateRandomArray() {
     return result.sort((a, b) => a - b);
 }
 
-
 // 問題を生成
 function generateQuestion(){
-    let correctTile = 1;
-    fourTimesTile = [];
-    questionArea.innerHTML = '';
-    const createQuestion = generateRandomArray();
-    let cloneQuestion = [...createQuestion];
-    for(let i = 0; i < createQuestion.length; i++){
-        const createTile = document.createElement('img');
-        createTile.setAttribute('src',`img/s${createQuestion[i]}.png`);
-        createTile.draggable = false;
-        questionArea.appendChild(createTile);
-    }
-
-    for(let i = 1; i < 10; i++){
-        if(!fourTimesTile.includes(i)){
-            cloneQuestion.push(i);
-            cloneQuestion.sort((a, b) => a - b);
-            // 出現回数をカウントするオブジェクト
-            const countMap = {};
-
-            // 元の配列をループして出現回数をカウント
-            for (let num of cloneQuestion) {
-                if (countMap[num]) {
-                    countMap[num]++;
-                } else {
-                    countMap[num] = 1;
-                }
-            }
-
-            // カウントされた出現回数を新たな配列に格納
-            const hand = [];
-            for (let i = 1; i < 10; i++) {
-                hand.push(countMap[i] || 0);
-            }
-            function checkMentsu(hand){
-              let r, a = hand[0], b = hand[1];
-
-              for(let i=0; i<7; i++){
-                if(r=a%3, b>=r && hand[i+2]>=r){
-                  a=b-r; b=hand[i+2]-r;
-                }
-                else return false;
-              }
-
-              if(a%3==0 && b%3==0) return true;
-              else return false;
-            }
-
-            function checkHola(hand) {
-                let p = 0;
-
-                // 最初のループ: pの計算
-                for (let i = 0; i < 9; i++) {
-                    p += i * hand[i];
-                }
-
-                // 2番目のループ: handの操作と条件判定
-                for (let i = p * 2 % 3; i < 9; i += 3) {
-                    // hand[i]を2減算する
-                    hand[i] -= 2;
-
-                    // hand[i]が0以上の場合に処理を続行
-                    if (hand[i] >= 0) {
-                        // checkMentsu(hand)が真の場合
-                        if (checkMentsu(hand)) {
-                            // hand[i]を元に戻し、trueを返す
-                            hand[i] += 2;
-                            return true;
-                        }
-                    }
-
-                    // hand[i]を元に戻す
-                    hand[i] += 2;
-                }
-
-                // どの条件も満たさなかった場合、falseを返す
-                return false;
-            }
-            if(checkHola(hand) === true){
-                correctAnswer.push(correctTile);
-            }
-            correctTile++;
-            cloneQuestion = [...createQuestion];
-        }else{
-            correctTile++;
+    for(let i = 1; i < 5; i++){
+        let correctTile = 1;
+        fourTimesTile = [];
+        questionArea.innerHTML = '';
+        const createQuestion = generateRandomArray();
+        let cloneQuestion = [...createQuestion];
+        for(let i = 0; i < createQuestion.length; i++){
+            const createTile = document.createElement('img');
+            createTile.setAttribute('src',`img/s${createQuestion[i]}.png`);
+            createTile.draggable = false;
+            questionArea.appendChild(createTile);
         }
+
+        for(let i = 1; i < 10; i++){
+            if(!fourTimesTile.includes(i)){
+                cloneQuestion.push(i);
+                cloneQuestion.sort((a, b) => a - b);
+                // 出現回数をカウントするオブジェクト
+                const countMap = {};
+    
+                // 元の配列をループして出現回数をカウント
+                for (let num of cloneQuestion) {
+                    if (countMap[num]) {
+                        countMap[num]++;
+                    } else {
+                        countMap[num] = 1;
+                    }
+                }
+    
+                // カウントされた出現回数を新たな配列に格納
+                const hand = [];
+                for (let i = 1; i < 10; i++) {
+                    hand.push(countMap[i] || 0);
+                }
+                function checkMentsu(hand){
+                    let r, a = hand[0], b = hand[1];
+    
+                    for(let i=0; i<7; i++){
+                    if(r=a%3, b>=r && hand[i+2]>=r){
+                        a=b-r; b=hand[i+2]-r;
+                    }
+                    else return false;
+                    }
+    
+                    if(a%3==0 && b%3==0) return true;
+                    else return false;
+                }
+    
+                function checkHola(hand) {
+                    let p = 0;
+    
+                    // 最初のループ: pの計算
+                    for (let i = 0; i < 9; i++) {
+                        p += i * hand[i];
+                    }
+    
+                    // 2番目のループ: handの操作と条件判定
+                    for (let i = p * 2 % 3; i < 9; i += 3) {
+                        // hand[i]を2減算する
+                        hand[i] -= 2;
+    
+                        // hand[i]が0以上の場合に処理を続行
+                        if (hand[i] >= 0) {
+                            // checkMentsu(hand)が真の場合
+                            if (checkMentsu(hand)) {
+                                // hand[i]を元に戻し、trueを返す
+                                hand[i] += 2;
+                                return true;
+                            }
+                        }
+    
+                        // hand[i]を元に戻す
+                        hand[i] += 2;
+                    }
+    
+                    // どの条件も満たさなかった場合、falseを返す
+                    return false;
+                }
+                if(checkHola(hand) === true){
+                    correctAnswer.push(correctTile);
+                }
+                correctTile++;
+                cloneQuestion = [...createQuestion];
+            }else{
+                correctTile++;
+            }
+        }
+        if(correctAnswer.length !== 0){
+            break;
+        }
+        correctTile = 1;
     }
-    correctTile = 1;
 }
 
 function compareAnswer(selectedTile, correctAnswer){
