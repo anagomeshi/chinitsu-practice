@@ -11,8 +11,13 @@ html,body {
   box-sizing: border-box;
 }
 
-body{
-  padding-bottom: env(safe-area-inset-bottom);;
+@supports(padding: env(safe-area-inset-left)) {
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
 }
 
 /* クロム */
@@ -168,6 +173,7 @@ body{
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
+  max-width: 56rem;
   box-sizing: border-box;
 }
 
@@ -215,7 +221,7 @@ body{
   border: none;
   border-radius: 25px;
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   line-height: 2rem;
   color: #ffffff;
   background-color: #698c78;
