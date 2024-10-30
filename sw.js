@@ -12,6 +12,7 @@ var urlsToCache = [
     'img/s9.png',
     'img/setting.svg',
     'img/time-attack.svg',
+    'index.html',
     'script.js',
     'style.css'
 ];
